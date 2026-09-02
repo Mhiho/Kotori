@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Polityka prywatności Kotori</title>
-<meta name="description" content="Polityka prywatności aplikacji mobilnej Kotori do nauki japońskiego.">
+<title>Kotori — nauka japońskiego i haiku</title>
+<meta name="description" content="Kotori: ucz się japońskiego (kana, słownictwo, wymowa) i pisz własne haiku razem ze społecznością.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap">
 <style>
   :root {
@@ -49,233 +49,176 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
-
   a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-  a:focus-visible, button:focus-visible, summary:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  .shell {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 24px 96px;
-  }
+  .shell { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-  /* ---------- Header ---------- */
-  header {
-    padding: 56px 0 40px;
+  /* ---------- Nav ---------- */
+  nav.top {
     border-bottom: 1px solid var(--rule);
-    margin-bottom: 40px;
+  }
+  nav.top .shell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 24px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .brand svg { width: 30px; height: 30px; flex: none; }
+  nav.top .links {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  nav.top .links a { color: var(--ink-soft); text-decoration: none; }
+  nav.top .links a:hover { color: var(--ink); }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    padding: 88px 0 72px;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
   }
   .eyebrow {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink-faint);
-    margin-bottom: 22px;
+    margin: 0 0 28px;
   }
-  .eyebrow::before {
-    content: "";
-    width: 20px;
-    height: 1px;
-    background: var(--ink-faint);
-  }
-  .title-row {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
+  .eyebrow::before, .eyebrow::after { content: ""; width: 28px; height: 1px; background: var(--ink-faint); }
+  .hero-seal { width: 108px; height: 108px; margin: 0 auto 28px; }
   h1 {
     font-family: "Source Serif 4", Georgia, serif;
     font-weight: 600;
-    font-size: clamp(2rem, 4.2vw, 3rem);
-    line-height: 1.08;
-    margin: 0 0 10px;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    margin: 0 0 18px;
     text-wrap: balance;
   }
-  .subtitle {
-    max-width: 54ch;
+  .hero p.lede {
+    max-width: 52ch;
+    margin: 0 auto 40px;
     color: var(--ink-soft);
-    font-size: 1.05rem;
-    margin: 0;
+    font-size: 1.15rem;
   }
-  .seal {
-    flex: none;
-    width: 84px;
-    height: 84px;
-  }
-  .meta-row {
+  .cta-row {
     display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    margin-top: 28px;
-    font-size: 13px;
-    color: var(--ink-faint);
-    font-variant-numeric: tabular-nums;
-  }
-  .meta-row strong {
-    color: var(--ink-soft);
-    font-weight: 600;
-  }
-
-  /* ---------- Layout ---------- */
-  .layout {
-    display: grid;
-    grid-template-columns: 240px minmax(0, 700px);
-    gap: 64px;
-    align-items: start;
-  }
-  @media (max-width: 860px) {
-    .layout { grid-template-columns: 1fr; gap: 28px; }
-  }
-
-  nav.toc {
-    position: sticky;
-    top: 28px;
-  }
-  @media (max-width: 860px) {
-    nav.toc { position: static; }
-  }
-  .toc-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin: 0 0 14px;
-  }
-  .toc-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-left: 1px solid var(--rule);
-  }
-  .toc-list li { margin: 0; }
-  .toc-list a {
-    display: block;
-    padding: 7px 0 7px 16px;
-    margin-left: -1px;
-    border-left: 1px solid transparent;
-    color: var(--ink-soft);
-    text-decoration: none;
-    font-size: 13.5px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-  }
-  .toc-list a:hover { color: var(--ink); }
-  .toc-list a.active {
-    color: var(--accent);
-    border-left-color: var(--accent);
-    font-weight: 600;
-  }
-
-  details.toc-mobile { display: none; }
-  @media (max-width: 860px) {
-    details.toc-mobile {
-      display: block;
-      background: var(--paper-raised);
-      border: 1px solid var(--rule);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin-bottom: 8px;
-    }
-    details.toc-mobile summary {
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 0.02em;
-    }
-    details.toc-mobile .toc-list { border-left: none; margin-top: 12px; }
-    details.toc-mobile .toc-list a { padding-left: 12px; border-left: 1px solid var(--rule); }
-    nav.toc.desktop-only { display: none; }
-  }
-
-  /* ---------- Content ---------- */
-  main { min-width: 0; }
-  section.clause {
-    padding-top: 8px;
-    margin-bottom: 46px;
-    scroll-margin-top: 24px;
-  }
-  section.clause:last-child { margin-bottom: 0; }
-
-  .clause-head {
-    display: flex;
-    align-items: baseline;
     gap: 14px;
-    margin-bottom: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-  .clause-num {
-    flex: none;
+  .store-badge {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-width: 40px;
-    height: 26px;
-    padding: 0 8px;
+    gap: 10px;
+    padding: 12px 20px;
     border: 1px solid var(--rule);
-    border-radius: 4px;
-    font-size: 12.5px;
+    border-radius: 10px;
+    background: var(--paper-raised);
+    color: var(--ink-soft);
+    font-size: 13.5px;
     font-weight: 600;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-    background: var(--accent-soft);
+    text-decoration: none;
+  }
+  .store-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--seal); flex: none;
+  }
+  .store-badge span.small { display: block; font-weight: 400; font-size: 11px; color: var(--ink-faint); }
+
+  /* ---------- Features ---------- */
+  section.features { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+  .section-head { max-width: 60ch; margin: 0 0 48px; }
+  .section-eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 12px;
   }
   h2 {
     font-family: "Source Serif 4", Georgia, serif;
     font-weight: 600;
-    font-size: 1.36rem;
-    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin: 0 0 12px;
     text-wrap: balance;
   }
-  .clause p { margin: 0 0 14px; max-width: 66ch; color: var(--ink); }
-  .clause p:last-child { margin-bottom: 0; }
-  .clause ul {
-    margin: 0 0 14px;
-    padding-left: 0;
-    list-style: none;
-    max-width: 66ch;
-  }
-  .clause ul li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 10px;
-  }
-  .clause ul li::before {
-    content: "";
-    position: absolute;
-    left: 2px;
-    top: 10px;
-    width: 5px;
-    height: 5px;
-    background: var(--accent);
-    border-radius: 50%;
-  }
-  .clause ul li strong { color: var(--ink); font-weight: 600; }
-  .clause strong { font-weight: 600; }
+  .section-head p { color: var(--ink-soft); margin: 0; font-size: 1.02rem; }
 
-  .note {
-    border-left: 2px solid var(--seal);
-    background: var(--accent-soft);
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    font-size: 14.5px;
-    color: var(--ink-soft);
-    max-width: 62ch;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    overflow: hidden;
   }
-  .note strong { color: var(--ink); }
+  @media (max-width: 860px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--paper);
+    padding: 32px 28px;
+  }
+  .card .glyph {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: "Source Serif 4", serif;
+    font-size: 19px;
+    margin-bottom: 18px;
+  }
+  .card h3 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.08rem;
+    margin: 0 0 8px;
+  }
+  .card p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+
+  /* ---------- Haiku showcase ---------- */
+  section.showcase { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+  .poem-card {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px 32px;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+  }
+  .poem-card .line {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .poem-card .credit {
+    margin-top: 22px;
+    font-size: 13px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
 
   /* ---------- Footer ---------- */
-  footer {
-    margin-top: 64px;
-    padding-top: 28px;
-    border-top: 1px solid var(--rule);
+  footer { padding: 48px 0 64px; }
+  footer .shell {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -285,206 +228,105 @@
     color: var(--ink-faint);
   }
   footer a { color: var(--ink-soft); }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .toc-list a { transition: none; }
-  }
-  html { scroll-behavior: smooth; }
+  footer .foot-links { display: flex; gap: 22px; }
 </style>
 </head>
 <body>
-<div class="shell">
-  <header>
-    <p class="eyebrow">Dokument prawny</p>
-    <div class="title-row">
-      <div>
-        <h1>Polityka prywatności</h1>
-        <p class="subtitle">Aplikacja mobilna <strong>Kotori</strong> — nauka japońskiego: kana, słownictwo i haiku.</p>
-      </div>
-      <svg class="seal" viewBox="0 0 84 84" role="img" aria-label="Pieczęć Kotori">
+
+<nav class="top">
+  <div class="shell">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 84 84" role="img" aria-label="Kotori">
         <circle cx="42" cy="42" r="39" fill="none" stroke="var(--seal)" stroke-width="2.5"/>
         <circle cx="42" cy="42" r="33" fill="none" stroke="var(--seal)" stroke-width="1"/>
         <text x="42" y="50" text-anchor="middle" font-family="'Source Serif 4', serif" font-size="30" fill="var(--seal)">鳥</text>
       </svg>
+      Kotori
+    </a>
+    <div class="links">
+      <a href="privacy.html">Polityka prywatności</a>
+      <a href="mailto:m.pelka7@gmail.com">Kontakt</a>
     </div>
-    <div class="meta-row">
-      <span><strong>Ostatnia aktualizacja:</strong> 3 września 2026</span>
-      <span><strong>Wersja:</strong> 1.2</span>
-      <span><strong>Administrator:</strong> Michał Pełka</span>
-    </div>
-  </header>
-
-  <div class="layout">
-    <details class="toc-mobile">
-      <summary>Spis treści</summary>
-      <ul class="toc-list" id="tocListMobile"></ul>
-    </details>
-
-    <nav class="toc desktop-only" aria-label="Spis treści">
-      <p class="toc-label">Spis treści</p>
-      <ul class="toc-list" id="tocList"></ul>
-    </nav>
-
-    <main id="content">
-      <section class="clause" id="s1">
-        <div class="clause-head"><span class="clause-num">01</span><h2>Administrator danych</h2></div>
-        <p>Administratorem danych osobowych w rozumieniu RODO jest <strong>Michał Pełka</strong>, twórca i wydawca aplikacji Kotori (konto wydawcy „mhihobby” w Google Play i App Store). We wszystkich sprawach dotyczących danych osobowych możesz się z nami skontaktować pod adresem <a href="mailto:m.pelka7@gmail.com">m.pelka7@gmail.com</a>.</p>
-      </section>
-
-      <section class="clause" id="s2">
-        <div class="clause-head"><span class="clause-num">02</span><h2>Jakie dane zbieramy</h2></div>
-        <ul>
-          <li><strong>Dane konta</strong> — adres e-mail, nazwa wyświetlana i zdjęcie profilowe, pobrane od dostawcy logowania (Google, Apple) albo podane przy rejestracji e-mailem i hasłem.</li>
-          <li><strong>Dane profilu w aplikacji</strong> — wybrany awatar, pseudonim, poziom energii, wariant subskrypcji (darmowy / Plus / nielimitowany), statystyki (napisane haiku, komentarze, polubienia) oraz postęp w lekcjach kany i słownictwa.</li>
-          <li><strong>Dane społecznościowe</strong> — lista znajomych, zaproszenia do znajomych, prezenty energii wysyłane i otrzymywane, treści haiku i komentarzy publikowanych w aplikacji.</li>
-          <li><strong>Dane głosowe</strong> — nagrania mowy przetwarzane podczas ćwiczeń wymowy; szczegóły w §6.</li>
-          <li><strong>Identyfikatory reklamowe</strong> — identyfikator reklamowy urządzenia i dane o interakcji z reklamami; szczegóły w §5.</li>
-          <li><strong>Dane techniczne i diagnostyczne</strong> — generowane automatycznie przez Firebase w związku z uwierzytelnianiem i utrzymaniem bezpieczeństwa usługi (np. znaczniki czasu operacji, identyfikator konta).</li>
-        </ul>
-      </section>
-
-      <section class="clause" id="s3">
-        <div class="clause-head"><span class="clause-num">03</span><h2>Źródła danych</h2></div>
-        <p>Dane pochodzą bezpośrednio od Ciebie — z formularza rejestracji, ustawień profilu i treści publikowanych w aplikacji — oraz od dostawców logowania (Google Sign-In, Sign in with Apple), którzy przekazują nam adres e-mail, nazwę i zdjęcie profilowe zgodnie z Twoją zgodą wyrażoną w ich własnym systemie logowania.</p>
-      </section>
-
-      <section class="clause" id="s4">
-        <div class="clause-head"><span class="clause-num">04</span><h2>Cele i podstawy prawne przetwarzania</h2></div>
-        <ul>
-          <li>Założenie i obsługa konta oraz synchronizacja postępów między urządzeniami — <strong>art. 6 ust. 1 lit. b RODO</strong> (wykonanie umowy).</li>
-          <li>Funkcje społecznościowe: znajomi, ranking, prezenty energii — <strong>art. 6 ust. 1 lit. b i f RODO</strong>.</li>
-          <li>Wyświetlanie reklam w darmowej wersji aplikacji — <strong>art. 6 ust. 1 lit. a RODO</strong> (zgoda na reklamy spersonalizowane) lub <strong>lit. f</strong> (uzasadniony interes przy reklamach niespersonalizowanych).</li>
-          <li>Ćwiczenia wymowy z użyciem mikrofonu — <strong>art. 6 ust. 1 lit. a RODO</strong> (zgoda systemowa udzielana przy pierwszym użyciu funkcji).</li>
-          <li>Bezpieczeństwo i zapobieganie nadużyciom (np. filtr wulgaryzmów w pseudonimach) — <strong>art. 6 ust. 1 lit. f RODO</strong>.</li>
-        </ul>
-      </section>
-
-      <section class="clause" id="s5">
-        <div class="clause-head"><span class="clause-num">05</span><h2>Reklamy (Google AdMob)</h2></div>
-        <p>Darmowa wersja aplikacji wyświetla reklamy dostarczane przez <strong>Google AdMob</strong> — reklamy pełnoekranowe oraz reklamy nagradzane, za których obejrzenie otrzymujesz energię. AdMob może wykorzystywać identyfikator reklamowy urządzenia i dane o interakcjach z reklamami w celu ich dopasowania i pomiaru skuteczności, zgodnie z własną polityką prywatności Google.</p>
-        <p>Subskrybenci planu „nielimitowany” nie widzą reklam. Subskrybenci planu „Plus” nadal je widzą — subskrypcja w tym wariancie podnosi jedynie dzienny limit energii.</p>
-      </section>
-
-      <section class="clause" id="s6">
-        <div class="clause-head"><span class="clause-num">06</span><h2>Mikrofon i rozpoznawanie mowy</h2></div>
-        <p>Ćwiczenia wymowy korzystają z mechanizmów rozpoznawania mowy wbudowanych w system operacyjny (iOS/Android). Po udzieleniu zgody na dostęp do mikrofonu Twoja wypowiedź jest przetwarzana w celu porównania jej z oczekiwanym słowem japońskim i natychmiastowego pokazania wyniku.</p>
-        <div class="note">Nie zapisujemy ani nie przechowujemy tych nagrań na naszych serwerach — przetwarzanie mowy odbywa się przez usługę rozpoznawania mowy systemu operacyjnego (Apple lub Google), zgodnie z ich własnymi politykami prywatności.</div>
-      </section>
-
-      <section class="clause" id="s7">
-        <div class="clause-head"><span class="clause-num">07</span><h2>Funkcje społecznościowe</h2></div>
-        <p>Pseudonim, awatar i statystyki (napisane haiku, komentarze, polubienia) mogą być widoczne dla innych użytkowników aplikacji, w tym w rankingu i na liście znajomych. Publikowane haiku i komentarze są widoczne dla innych użytkowników w zależności od ustawień języka. Nie umieszczaj w tych miejscach danych, których nie chcesz ujawniać publicznie.</p>
-      </section>
-
-      <section class="clause" id="s8">
-        <div class="clause-head"><span class="clause-num">08</span><h2>Odbiorcy danych</h2></div>
-        <p>Do przetwarzania danych korzystamy z następujących podmiotów (podprocesorów):</p>
-        <ul>
-          <li><strong>Google Firebase</strong> (Google Ireland Ltd.) — uwierzytelnianie, baza danych Firestore i funkcje serwerowe (Cloud Functions), region <strong>europe-west1</strong> (Belgia).</li>
-          <li><strong>Google AdMob</strong> (Google Ireland Ltd.) — wyświetlanie reklam.</li>
-          <li><strong>Google Sign-In</strong> i <strong>Sign in with Apple</strong> (odpowiednio Google Ireland Ltd. i Apple Distribution International) — logowanie do aplikacji.</li>
-          <li><strong>Google Play</strong> i <strong>App Store</strong> — w zakresie danych transakcyjnych zakupów i subskrypcji, jeśli z nich korzystasz.</li>
-        </ul>
-        <p>Nie sprzedajemy danych osobowych ani nie udostępniamy ich innym podmiotom w celach marketingowych.</p>
-      </section>
-
-      <section class="clause" id="s9">
-        <div class="clause-head"><span class="clause-num">09</span><h2>Przekazywanie danych poza EOG</h2></div>
-        <p>Niektórzy dostawcy (Google, Apple) mogą przetwarzać dane na serwerach zlokalizowanych poza Europejskim Obszarem Gospodarczym. W takich przypadkach przekazanie odbywa się na podstawie standardowych klauzul umownych zatwierdzonych przez Komisję Europejską lub innego mechanizmu zgodności z RODO stosowanego przez danego dostawcę.</p>
-      </section>
-
-      <section class="clause" id="s10">
-        <div class="clause-head"><span class="clause-num">10</span><h2>Okres przechowywania danych</h2></div>
-        <p>Dane konta i profilu przechowujemy przez czas korzystania z aplikacji. Po usunięciu konta dane są usuwane w terminie opisanym w §12, chyba że dłuższe przechowywanie wynika z obowiązków prawnych (np. rozliczeniowych) — wówczas ograniczamy się do danych niezbędnych do spełnienia tych obowiązków.</p>
-      </section>
-
-      <section class="clause" id="s11">
-        <div class="clause-head"><span class="clause-num">11</span><h2>Twoje prawa</h2></div>
-        <p>Zgodnie z RODO przysługuje Ci prawo do: dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych, sprzeciwu wobec przetwarzania oraz cofnięcia zgody w dowolnym momencie — bez wpływu na zgodność z prawem przetwarzania dokonanego przed cofnięciem. Przysługuje Ci również prawo wniesienia skargi do <strong>Prezesa Urzędu Ochrony Danych Osobowych (UODO)</strong>.</p>
-        <p>Aby skorzystać z powyższych praw, napisz na <a href="mailto:m.pelka7@gmail.com">m.pelka7@gmail.com</a>.</p>
-        <p>Jeśli logujesz się e-mailem i hasłem, hasło możesz samodzielnie zresetować z ekranu logowania („Nie pamiętasz hasła?”) — link do zmiany hasła wysyła bezpośrednio Firebase Authentication (Google) na Twój adres e-mail; nie mamy wglądu w Twoje hasło na żadnym etapie.</p>
-      </section>
-
-      <section class="clause" id="s12">
-        <div class="clause-head"><span class="clause-num">12</span><h2>Usuwanie konta i danych</h2></div>
-        <p>Konto możesz usunąć samodzielnie w aplikacji: przejdź do zakładki <strong>Profil</strong> i wybierz opcję <strong>„Usuń konto”</strong> na dole ekranu, a następnie potwierdź decyzję. Usunięcie jest natychmiastowe i nieodwracalne — kasuje profil, statystyki, listę znajomych, zaproszenia do znajomych, historię postępów w lekcjach oraz zajmowany pseudonim, a konto logowania (Google/Apple/e-mail) zostaje trwale usunięte z systemu uwierzytelniania.</p>
-        <p>Przy usuwaniu wybierasz dodatkowo, co ma się stać z opublikowanymi przez Ciebie haiku:</p>
-        <ul>
-          <li><strong>„Usuń, zostaw haiku”</strong> — konto i dane osobowe znikają, a napisane przez Ciebie haiku pozostają widoczne w aplikacji jako treść bez powiązania z żadnym kontem.</li>
-          <li><strong>„Usuń razem z haiku”</strong> — dodatkowo trwale usuwamy wszystkie Twoje haiku wraz z komentarzami i polubieniami, które do nich należą.</li>
-        </ul>
-        <p>Jeśli z jakiegoś powodu nie masz dostępu do aplikacji, możesz też poprosić o usunięcie konta mailowo — wyślij wiadomość z adresu e-mail powiązanego z kontem na <a href="mailto:m.pelka7@gmail.com?subject=Usuni%C4%99cie%20konta%20Kotori">m.pelka7@gmail.com</a>, w temacie wpisując „Usunięcie konta Kotori” i zaznaczając, czy haiku mają zostać usunięte. W tym trybie dane zostaną usunięte w ciągu 30 dni od potwierdzenia tożsamości.</p>
-      </section>
-
-      <section class="clause" id="s13">
-        <div class="clause-head"><span class="clause-num">13</span><h2>Dzieci</h2></div>
-        <p>Aplikacja jest kierowana do ogólnej publiczności i nie jest przeznaczona specjalnie dla dzieci poniżej 13. roku życia. Jeśli jesteś rodzicem lub opiekunem i uważasz, że Twoje dziecko przekazało nam dane osobowe bez Twojej zgody, skontaktuj się z nami w celu ich usunięcia.</p>
-      </section>
-
-      <section class="clause" id="s14">
-        <div class="clause-head"><span class="clause-num">14</span><h2>Bezpieczeństwo</h2></div>
-        <p>Stosujemy techniczne i organizacyjne środki ochrony danych, w tym szyfrowane połączenia (HTTPS/TLS) oraz reguły dostępu do bazy danych (Firestore Security Rules), które ograniczają dostęp do danych wyłącznie do zalogowanego właściciela konta oraz do zakresu niezbędnego dla działania funkcji społecznościowych.</p>
-      </section>
-
-      <section class="clause" id="s15">
-        <div class="clause-head"><span class="clause-num">15</span><h2>Zmiany polityki</h2></div>
-        <p>Możemy okresowo aktualizować niniejszą politykę prywatności, na przykład w związku ze zmianą funkcji aplikacji lub przepisów prawa. O istotnych zmianach poinformujemy w aplikacji. Datę ostatniej aktualizacji znajdziesz na górze dokumentu.</p>
-      </section>
-
-      <section class="clause" id="s16">
-        <div class="clause-head"><span class="clause-num">16</span><h2>Kontakt</h2></div>
-        <p>Pytania dotyczące niniejszej polityki lub przetwarzania Twoich danych prosimy kierować na adres <a href="mailto:m.pelka7@gmail.com">m.pelka7@gmail.com</a>.</p>
-      </section>
-    </main>
   </div>
+</nav>
 
-  <footer>
+<header class="hero">
+  <div class="shell">
+    <p class="eyebrow">Nauka japońskiego · Haiku · Społeczność</p>
+    <h1>Ucz się japońskiego,<br>pisząc haiku.</h1>
+    <p class="lede">Kotori uczy Cię kany i podstawowego słownictwa, pomaga ćwiczyć wymowę, a potem pozwala ułożyć własne haiku i podzielić się nim ze społecznością.</p>
+    <div class="cta-row">
+      <span class="store-badge"><span class="dot"></span>App Store <span class="small">wkrótce</span></span>
+      <span class="store-badge"><span class="dot"></span>Google Play <span class="small">wkrótce</span></span>
+    </div>
+  </div>
+</header>
+
+<section class="features">
+  <div class="shell">
+    <div class="section-head">
+      <p class="section-eyebrow">Co znajdziesz w aplikacji</p>
+      <h2>Od pierwszej kany do własnego haiku</h2>
+      <p>Kotori łączy krótkie lekcje językowe z twórczym pisaniem — codzienna nauka ma od razu praktyczny efekt.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="glyph">あ</div>
+        <h3>Kana i słownictwo</h3>
+        <p>Lekcje hiragany, katakany i podstawowego słownictwa, budowane krok po kroku.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">聞</div>
+        <h3>Ćwiczenia wymowy</h3>
+        <p>Powiedz słowo na głos, a aplikacja sprawdzi Twoją wymowę i podpowie poprawkę.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">筆</div>
+        <h3>Pisz haiku</h3>
+        <p>Ułóż własne haiku w klasycznej formie 5-7-5 i zapisz je w swoim profilu.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">和</div>
+        <h3>Społeczność</h3>
+        <p>Czytaj haiku innych, komentuj i polub te, które szczególnie Cię poruszą.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">友</div>
+        <h3>Znajomi</h3>
+        <p>Zapraszaj znajomych, obserwujcie swoje postępy i wysyłajcie sobie energię do nauki.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">光</div>
+        <h3>Energia i postępy</h3>
+        <p>System energii motywuje do codziennej, krótkiej sesji nauki zamiast wypalających maratonów.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="showcase">
+  <div class="shell">
+    <div class="poem-card">
+      <p class="line">
+        stary staw —<br>
+        żaba wskakuje w wodę,<br>
+        plusk ciszy
+      </p>
+      <p class="credit">napisane w Kotori</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="shell">
     <span>© 2026 Michał Pełka — Kotori</span>
-    <a href="mailto:m.pelka7@gmail.com">m.pelka7@gmail.com</a>
-  </footer>
-</div>
+    <div class="foot-links">
+      <a href="privacy.html">Polityka prywatności</a>
+      <a href="privacy.html#s12">Usuwanie konta</a>
+      <a href="mailto:m.pelka7@gmail.com">m.pelka7@gmail.com</a>
+    </div>
+  </div>
+</footer>
 
-<script>
-  (function () {
-    var sections = Array.prototype.slice.call(document.querySelectorAll('section.clause'));
-    var entries = sections.map(function (s) {
-      return { id: s.id, label: s.querySelector('h2').textContent, num: s.querySelector('.clause-num').textContent };
-    });
-
-    function buildList(target) {
-      target.innerHTML = '';
-      entries.forEach(function (e) {
-        var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.href = '#' + e.id;
-        a.textContent = e.num + '  ' + e.label;
-        a.dataset.target = e.id;
-        li.appendChild(a);
-        target.appendChild(li);
-      });
-    }
-    var tocList = document.getElementById('tocList');
-    var tocListMobile = document.getElementById('tocListMobile');
-    buildList(tocList);
-    buildList(tocListMobile);
-
-    var allLinks = Array.prototype.slice.call(document.querySelectorAll('.toc-list a'));
-
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function (obs) {
-        obs.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var id = entry.target.id;
-            allLinks.forEach(function (a) {
-              a.classList.toggle('active', a.dataset.target === id);
-            });
-          }
-        });
-      }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
-      sections.forEach(function (s) { observer.observe(s); });
-    }
-  })();
-</script>
 </body>
 </html>
